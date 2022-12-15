@@ -23,7 +23,7 @@ exports.create = async (req, res) => {
     escolaVinculo,
     horasAlocadas,
     dataDemissao,
-    turnOver
+    turnOver,
   } = req.body;
   try {
     const funcionario = await prisma.employee.create({
@@ -44,7 +44,7 @@ exports.create = async (req, res) => {
         escolaVinculo,
         horasAlocadas,
         dataDemissao,
-        turnOver
+        turnOver,
       },
     });
     console.log(funcionario);
@@ -89,7 +89,6 @@ exports.search = async (req, res) => {
       },
     });
     res.json({ status: 200, func });
-
   } catch (err) {
     console.error(err);
     res.json({
@@ -104,12 +103,11 @@ exports.searchCPF = async (req, res) => {
   try {
     const func = await prisma.employee.findMany({
       where: {
-        cpf: cpf
-    }
-    })
-  
+        cpf: cpf,
+      },
+    });
+
     res.json({ status: 200, func });
-    
   } catch (err) {
     console.error(err);
     res.json({
@@ -138,37 +136,36 @@ exports.updateOne = async (req, res) => {
     escolaVinculo,
     horasAlocadas,
     dataDemissao,
-    turnOver
+    turnOver,
   } = req.body;
-  
+
   try {
     const func_edit = await prisma.employee.update({
       where: {
-        cpf: cpff
+        cpf: cpff,
       },
       data: {
-          nome,
-          rg,
-          cpf,
-          dataNascimento,
-          dataContratacao,
-          email,
-          telefoneWapp,
-          departamento,
-          cargo,
-          salario,
-          pix,
-          modeloContratacao,
-          estagio,
-          escolaVinculo,
-          horasAlocadas,
-          dataDemissao,
-          turnOver
+        nome,
+        rg,
+        cpf,
+        dataNascimento,
+        dataContratacao,
+        email,
+        telefoneWapp,
+        departamento,
+        cargo,
+        salario,
+        pix,
+        modeloContratacao,
+        estagio,
+        escolaVinculo,
+        horasAlocadas,
+        dataDemissao,
+        turnOver,
       },
     });
 
     res.json({ status: 200, func_edit });
-
   } catch (err) {
     console.error(err);
     res.json({
@@ -187,7 +184,7 @@ exports.deleteOne = async (req, res) => {
         cpf: cpf,
       },
     });
-    res.json({ status: 204, message: 'Funcionário removido com sucesso!' });
+    res.json({ status: 204, message: "Funcionário removido com sucesso!" });
   } catch (err) {
     console.error(err);
     res.json({

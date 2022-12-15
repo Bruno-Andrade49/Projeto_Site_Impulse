@@ -109,7 +109,7 @@ exports.updateOne = async (req, res) => {
     const id_ = parseInt(id);
 
   try{
-    const clientUpdate = prisma.client.update({
+    const clientUpdate = await prisma.client.update({
       where:{
         id: id_
       },
@@ -129,7 +129,7 @@ exports.updateOne = async (req, res) => {
         Situacao
       }
     });
-    res.json({ status: 200, message: 'Cliente deletado com sucesso!', clientUpdate });
+    res.json({ status: 200, message: 'Cliente editado com sucesso!', clientUpdate });
   }catch (err) {
     console.error(err);
     res.json({
