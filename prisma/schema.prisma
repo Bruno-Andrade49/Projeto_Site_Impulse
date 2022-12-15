@@ -8,25 +8,43 @@ datasource db {
 }
 
 model Employee {
-  id                 Int      @id @default(autoincrement())
-  nome               String
-  rg                 Int      @unique
-  cpf                Int      @unique
-  data_nascimento    DateTime
-  data_contratacao   DateTime
-  endereco           String
-  funcao             String
-  departamento       String
-  salario            Int?
-  email              String   @unique
-  telefone           Int
-  data_saida         DateTime?
-  pix                String?
-  estagio            String?
-  horas_alocadas     Int
-  modelo_contratacao String
-  turn_over          String?
+  id                Int       @id @default(autoincrement())
+  nome              String
+  rg                String?   @unique
+  cpf               String    @unique
+  dataNascimento    DateTime
+  dataContratacao   DateTime
+  email             String    @unique
+  telefoneWapp      String
+  departamento      String
+  cargo             String
+  salario           String?
+  pix               String?
+  modeloContratacao String
+  estagio           String?
+  escolaVinculo     String?
+  horasAlocadas     Int
+  dataDemissao      DateTime?
+  turnOver          String?
 
   @@map("funcionarios")
 }
 
+model Client {
+  id                  Int     @id @default(autoincrement())
+  nome                String
+  cnpj                String  @unique
+  cnpjApto            String?
+  razaoSocial         String
+  endereco            String?
+  numero              String?
+  complemento         String?
+  bairro              String?
+  cidade              String?
+  emailResponsavel    String
+  nomeResponsavel     String
+  telefoneResponsavel String?
+  Situacao            String
+
+  @@map("clientes")
+}
