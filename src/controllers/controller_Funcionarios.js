@@ -98,12 +98,15 @@ exports.search = async (req, res) => {
   }
 };
 
-exports.searchCPF = async (req, res) => {
-  const { cpf } = req.params;
+exports.search_Id = async (req, res) => {
+  const { id } = req.params;
+  const id_ = parseInt(id);
+  console.log(id)
+
   try {
     const func = await prisma.employee.findMany({
       where: {
-        cpf: cpf,
+        id: id_
       },
     });
 
@@ -118,7 +121,8 @@ exports.searchCPF = async (req, res) => {
 };
 
 exports.updateOne = async (req, res) => {
-  const { cpff } = req.params;
+  const { id } = req.params;
+  const id_ = parseInt(id);
   const {
     nome,
     rg,
@@ -142,7 +146,7 @@ exports.updateOne = async (req, res) => {
   try {
     const func_edit = await prisma.employee.update({
       where: {
-        cpf: cpff,
+        id: id_
       },
       data: {
         nome,
@@ -176,12 +180,13 @@ exports.updateOne = async (req, res) => {
 };
 
 exports.deleteOne = async (req, res) => {
-  const { cpf } = req.params;
+  const { id } = req.params;
+  const id_ = parseInt(id);
 
   try {
     const func_edit = await prisma.employee.delete({
       where: {
-        cpf: cpf,
+        id: id_
       },
     });
     res.json({ status: 204, message: "Funcionário removido com sucesso!" });

@@ -7,11 +7,13 @@ const controller_clientes = require("../controllers/controller_Clientes");
 // Rotas de Funcionários
 routes.get("/", controller_funcionarios.welcome);
 routes.post("/funcionarios", controller_funcionarios.create);
+
 routes.get("/funcionarios", controller_funcionarios.searchAll);
 routes.get("/funcionarios/:nomeFuncionario", controller_funcionarios.search);
-routes.delete("/funcionarios/:cpf", controller_funcionarios.searchCPF);
-routes.put("/funcionarios/:cpff", controller_funcionarios.updateOne);
-routes.delete("/funcionarios/:cpf", controller_funcionarios.deleteOne);
+routes.get("/funcionarios/buscar/:id", controller_funcionarios.search_Id);
+
+routes.put("/funcionarios/:id", controller_funcionarios.updateOne);
+routes.delete("/funcionarios/:id", controller_funcionarios.deleteOne);
 
 //Rotas de Clientes
 routes.post("/clientes", controller_clientes.create);
