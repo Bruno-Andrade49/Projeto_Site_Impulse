@@ -48,3 +48,11 @@ model Client {
 
   @@map("clientes")
 }
+
+model Product {
+  id                  Int     @id @default(autoincrement())
+  segmento String
+  descricao String
+
+  @@map("produtos")
+}
